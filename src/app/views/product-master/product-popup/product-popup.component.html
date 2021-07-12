@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{data.event | titlecase}} Product</h4>
+</div>
+<div class="modal-body pt-4 pb-5">
+    <form [formGroup]="productForm">
+        <div>
+            <label>Product Name</label>
+            <input class="form-control" type="text" name="productName" formControlName="productName">
+            <small class="text-danger" *ngIf="isSubmitted && productForm.get('productName').errors?.required">Product
+                Name
+                is required</small>
+        </div>
+        <div class="pt-2">
+            <label>Category</label>
+            <select class="form-control" name="category" formControlName="category">
+                <option value=''>Select Category</option>
+                <option *ngFor="let category of categoryList" [value]="category.id">{{category.categoryName}}</option>
+            </select>
+            <small class="text-danger" *ngIf="isSubmitted && productForm.get('category').errors?.required">Category
+                is required</small>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn close-btn" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn add-btn" (click)="submit()">
+        <span *ngIf="data.event === 'Add'">Add</span>
+        <span *ngIf="data.event === 'Edit'">Update</span>
+    </button>
+</div>

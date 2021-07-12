@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 pt-4 title-text">
+            Products
+        </div>
+        <div class="col-6 pt-4">
+            <button class="float-right btn add-btn" (click)="openProductPopup('Add', null)">
+                Add New Product
+            </button>
+        </div>
+        <div class="col-12 pt-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th width="10%" scope="col" class="text-center">ID</th>
+                        <th width="35%" scope="col" class="text-center">Name</th>
+                        <th width="15%" scope="col" class="text-center">Category ID</th>
+                        <th width="30%" scope="col" class="text-center">Category Name</th>
+                        <th width="10%" scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of productList">
+                        <td scope="row" class="text-center">{{product?.id}}</td>
+                        <td class="text-center">{{product?.productName}}</td>
+                        <td class="text-center">{{product?.category?.id}}</td>
+                        <td class="text-center">{{product?.category?.categoryName}}</td>
+                        <td class="text-center">
+                            <span class="px-3" title="Edit">
+                                <div (click)="openProductPopup('Edit', product)" class="d-inline-block">
+                                    <span class="far fa-edit icons"></span>
+                                </div>
+                            </span>
+                            <span class="px-2" title="Delete">
+                                <div (click)="deleteProduct(product.id)" class="d-inline-block">
+                                    <i class="far fa-trash-alt icons"></i>
+                                </div>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 pt-3" *ngIf="productList">
+            <ngb-pagination class="d-flex justify-content-end" [collectionSize]="collectionSize" [(page)]="page"
+                (pageChange)="pageChanged($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

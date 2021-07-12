@@ -1,0 +1,26 @@
+.add-btn {
+    background: #3c8dbd;
+    color: #fff;
+}
+
+.title-text {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.icons {
+    cursor: pointer;
+}
+
+::ng-deep .page-link {
+    color: #3c8dbd;
+}
+
+::ng-deep .page-item.active .page-link {
+    background-color: #3c8dbd;
+    border-color: #3c8dbd;
+}
+
+::ng-deep .page-link:focus {
+    box-shadow: none;
+}

@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 pt-4 title-text">
+            Categories
+        </div>
+        <div class="col-6 pt-4">
+            <button class="float-right btn add-btn" (click)="openCategoryPopup('Add', null)">
+                Add New Category
+            </button>
+        </div>
+        <div class="col-12 pt-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th width="10%" scope="col" class="text-center">ID</th>
+                        <th width="30%" scope="col" class="text-center">Name</th>
+                        <th width="20%" scope="col" class="text-center">Created On</th>
+                        <th width="20%" scope="col" class="text-center">Updated On</th>
+                        <th width="20%" scope="col" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of categoryList">
+                        <td scope="row" class="text-center">{{category?.id}}</td>
+                        <td class="text-center">{{category?.categoryName}}</td>
+                        <td class="text-center">{{category?.createdAt | date: 'dd-MM-yyyy hh:mm a'}}</td>
+                        <td class="text-center">{{category?.updatedAt | date: 'dd-MM-yyyy hh:mm a'}}</td>
+                        <td class="text-center">
+                            <span class="px-3" title="Edit">
+                                <div (click)="openCategoryPopup('Edit', category)" class="d-inline-block">
+                                    <span class="far fa-edit icons"></span>
+                                </div>
+                            </span>
+                            <span class="px-2" title="Delete">
+                                <div (click)="deleteCategory(category.id)" class="d-inline-block">
+                                    <i class="far fa-trash-alt icons"></i>
+                                </div>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

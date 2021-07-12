@@ -1,0 +1,23 @@
+.title {
+    background: #3c8dbd;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    height: 60px;
+}
+
+.sidebar {
+    height: calc(100vh - 60px);
+    background: #222e32;
+    color: #fff;
+}
+
+.links {
+    cursor: pointer;
+    border-left: 4px solid #222e32;
+}
+
+.links.active {
+    background: #1b2326;
+    border-left: 4px solid #3c8dbd;
+}

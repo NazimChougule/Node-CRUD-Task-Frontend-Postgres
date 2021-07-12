@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{data.event | titlecase}} Category</h4>
+</div>
+<div class="modal-body pt-4 pb-5">
+    <form [formGroup]="categoryForm">
+        <label>Category Name</label>
+        <input class="form-control" type="text" name="categoryName" formControlName="categoryName">
+        <small class="text-danger" *ngIf="isSubmitted && categoryForm.get('categoryName').errors?.required">Category
+            Name
+            is required</small>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn close-btn" (click)="activeModal.close('Close click')">Close</button>
+    <button type="button" class="btn add-btn" (click)="submit()">
+        <span *ngIf="data.event === 'Add'">Add</span>
+        <span *ngIf="data.event === 'Edit'">Update</span>
+    </button>
+</div>
